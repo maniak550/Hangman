@@ -1,8 +1,11 @@
-var haslo = "Bez pracy nie ma kołaczy";
+var haslo = "Wódka zagina czasoprzestrzen";
 haslo = haslo.toUpperCase();
 var dlugosc = haslo.length;
 var haslo1 = "";
 var ile_skuch=0;
+
+var yes = new Audio("yes.wav");
+var no = new Audio("no.wav");
 for(i=0; i<dlugosc;i++)
 {
     if(haslo.charAt(i)==" ")haslo1 = haslo1+" ";
@@ -90,7 +93,7 @@ function sprawdz(nr)
         }
     }
     if(trafiona==true)
-    {
+    {   yes.play();
         var element = "lit"+nr;
         document.getElementById(element).style.background="green";
         document.getElementById(element).style.color="yellow";
@@ -100,7 +103,7 @@ function sprawdz(nr)
 
     }
     else
-    {
+    {   no.play();
         var element = "lit"+nr;
         document.getElementById(element).style.background="#330000";
         document.getElementById(element).style.color="#C00000";
