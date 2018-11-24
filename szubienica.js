@@ -62,7 +62,7 @@ function start()
 
     for (i=0;i<=34;i++){
         var element = "lit"+i;
-        tresc_diva=tresc_diva+'<div class="litera" id="'+element+'">'+litery[i]+'</div>'
+        tresc_diva=tresc_diva+'<div class="litera" onclick="sprawdz('+i+')" id="'+element+'">'+litery[i]+'</div>'
         if((i+1)%7==0) tresc_diva=tresc_diva+'<div style="clear:both;"></div>'
 
     }
@@ -71,4 +71,9 @@ function start()
 
     wypisz_haslo();
 
+}
+
+function sprawdz(nr)
+{
+    alert(nr);
 }
