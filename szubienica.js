@@ -73,7 +73,19 @@ function start()
 
 }
 
+String.prototype.ustawZnak =function(miejsce,znak)
+{
+    if(miejsce>this.length-1) return this.toString();
+    else return this.substr(0,miejsce)+znak+this.substr(miejsce+1);
+}
 function sprawdz(nr)
 {
-    alert(nr);
+    for(i=0;i<dlugosc; i++)
+    {
+        if(haslo.charAt(i) == litery[nr])
+        {
+            haslo1=haslo1.ustawZnak(i,litery[nr]);
+        }
+    }
+    wypisz_haslo();
 }
