@@ -2,7 +2,7 @@ var haslo = "Bez pracy nie ma kołaczy";
 haslo = haslo.toUpperCase();
 var dlugosc = haslo.length;
 var haslo1 = "";
-
+var ile_skuch=0;
 for(i=0; i<dlugosc;i++)
 {
     if(haslo.charAt(i)==" ")haslo1 = haslo1+" ";
@@ -80,12 +80,41 @@ String.prototype.ustawZnak =function(miejsce,znak)
 }
 function sprawdz(nr)
 {
+    var trafiona = false;
     for(i=0;i<dlugosc; i++)
     {
         if(haslo.charAt(i) == litery[nr])
         {
             haslo1=haslo1.ustawZnak(i,litery[nr]);
+            trafiona = true;
         }
     }
-    wypisz_haslo();
+    if(trafiona==true)
+    {
+        var element = "lit"+nr;
+        document.getElementById(element).style.background="green";
+        document.getElementById(element).style.color="yellow";
+        document.getElementById(element).style.border="3px solid #";
+        document.getElementById(element).style.cursor="default";
+        wypisz_haslo();
+
+    }
+    else
+    {
+        var element = "lit"+nr;
+        document.getElementById(element).style.background="#330000";
+        document.getElementById(element).style.color="#C00000";
+        document.getElementById(element).style.border="3px solid #C00000";
+        document.getElementById(element).style.cursor="default";
+        document.getElementById(element).setAttribute("onclick",";");
+        ile_skuch++;
+        var obraz = "img/s"+ile_skuch+".jpg";
+        document.getElementById("szubienica").innerHTML='<img src="'+obraz+'" alt=""/>'
+    } 
+    //wygrana 
+    if (haslo==haslo1)
+    document.getElementById("alfabet").innerHTML="TAK JEST PODANO PRAWIDLOWE HASLO: "+haslo+'<br/><br/><span class="reset" onclick="location.reload()">JESZCZE RAZ?</span>'
+    //przegrana
+    if(ile_skuch>=9)
+    document.getElementById("alfabet").innerHTML="PRZEGRANA NUUB: "+haslo+'<br/><br/><span class="reset" onclick="location.reload()">JESZCZE RAZ?</span>'
 }
